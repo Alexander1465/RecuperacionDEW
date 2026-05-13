@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./../style/styles.css">
 </head>
 
 <body>
@@ -13,12 +13,12 @@
     <button onclick="window.location.href = 'crudproducto.html'">Volver</button>
     <form id="editarProducto">
         <input type="text" id="nombre" placeholder="Nombre" required>
-        <input type="number" id="precio" placeholder="Precio" required>
+        <input type="number" id="precio" placeholder="Precio" step="0.01" required>
         <input type="text" id="descripcion" placeholder="Descripción" required>
         <button type="submit">Editar</button>
     </form>
     <script type="module">
-        import CrudProducto from "./crudproducto.js";
+        import CrudProducto from "./../js/crudproducto.js";
 
         const datosProductos = JSON.parse(localStorage.getItem('datosProductos'));
         const params = new URLSearchParams(window.location.search);

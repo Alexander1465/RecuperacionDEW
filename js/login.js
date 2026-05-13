@@ -54,7 +54,7 @@ async function login(nombre, password) {
         }
 
         localStorage.setItem('datosProductos', JSON.stringify(datosProductos));
-        window.location.href = 'principal.html';
+        window.location.href = '../page/principal.html';
 
     } catch (error) {
         console.error('Error con el inicio de sesión:', error);

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./../style/styles.css">
 </head>
 
 <body>
@@ -18,8 +18,8 @@
         </div>
     </section>
     <section>
+        <h1>Carrito</h1>
         <div id="divcarrito">
-            <h1>Carrito</h1>
 
         </div>
     </section>
@@ -29,9 +29,10 @@
     </div>
 
 
+
     <script type="module">
-        import Producto from "./producto.js";
-        import Carrito from "./carrito.js";
+        import Producto from "./../js/producto.js";
+        import Carrito from "./../js/carrito.js";
         const producto = new Producto();
         const carrito = new Carrito();
 
@@ -49,6 +50,7 @@
             liGrafica.addEventListener("click", () => {
                 window.location.href = "chart.html";
             });
+            
             menul.appendChild(liCrud);
             menul.appendChild(liGrafica);
         } else {
