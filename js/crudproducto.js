@@ -27,6 +27,9 @@ export default class CrudProducto {
             const nuevoProducto = new Productos(id, this.nombre, this.precio, this.descripcion);
             datosProductos.push(nuevoProducto);
             localStorage.setItem('datosProductos', JSON.stringify(datosProductos));
+            document.getElementById('nombre').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('descripcion').value = '';
             return this.mostrarInformacion();
         }
     }

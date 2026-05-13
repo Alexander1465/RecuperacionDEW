@@ -50,9 +50,18 @@
             liGrafica.addEventListener("click", () => {
                 window.location.href = "chart.html";
             });
-            
+            const liCerrarSesion = document.createElement("li");
+            liCerrarSesion.textContent = "Cerrar Sesión";
+            liCerrarSesion.addEventListener("click", () => {
+                localStorage.removeItem("datosUsuario");
+                localStorage.removeItem("datosProductos");
+                localStorage.removeItem("carrito");
+                window.location.href = "login.html";
+            });
+
             menul.appendChild(liCrud);
             menul.appendChild(liGrafica);
+            menul.appendChild(liCerrarSesion);
         } else {
             const menul = document.getElementById("Menu");
             const liGrafica = document.createElement("li");
