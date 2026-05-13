@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Productos</h1>
+    <section>
+        <div class="menudesplegable">
+            <ul id="Menu" style="cursor: pointer;">
+
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div id="divcarrito">
+            <h1>Carrito</h1>
+
+        </div>
+    </section>
+    <div class="cart" style="display: flex;  gap: 20px; width: 40%;">
+        <div id="product" style="border: 1px solid black; padding: 10px; width: 100%;">
+        </div>
+    </div>
+
+
+    <script type="module">
+        import Producto from "./producto.js";
+        import Carrito from "./carrito.js";
+        const producto = new Producto();
+        const carrito = new Carrito();
+
+        const datosUsuario = JSON.parse(localStorage.getItem("datosUsuario"));
+        console.log(datosUsuario);
+        if (datosUsuario.role === "admin") {
+            const menul = document.getElementById("Menu");
+            const liCrud = document.createElement("li");
+            liCrud.textContent = "Crud Productos";
+            liCrud.addEventListener("click", () => {
+                window.location.href = "crudproducto.html";
+            });
+            const liGrafica = document.createElement("li");
+            liGrafica.textContent = "Gráfica";
+            liGrafica.addEventListener("click", () => {
+                window.location.href = "chart.html";
+            });
+            menul.appendChild(liCrud);
+            menul.appendChild(liGrafica);
+        } else {
+            const menul = document.getElementById("Menu");
+            const liGrafica = document.createElement("li");
+            liGrafica.textContent = "Gráfica";
+            liGrafica.addEventListener("click", () => {
+                window.location.href = "chart.html";
+            });
+            menul.appendChild(liInicio);
+            menul.appendChild(liGrafica);
+        }
+
+        async function iniciar() {
+            producto.mostrarproducto();
+            carrito.mostrarCarrito();
+        }
+        iniciar();
+    </script>
+
+
+</body>
+
+</html>

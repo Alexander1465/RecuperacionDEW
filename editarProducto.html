@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Editar Producto</h1>
+    <button onclick="window.location.href = 'crudproducto.html'">Volver</button>
+    <form id="editarProducto">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="number" id="precio" placeholder="Precio" required>
+        <input type="text" id="descripcion" placeholder="Descripción" required>
+        <button type="submit">Editar</button>
+    </form>
+    <script type="module">
+        import CrudProducto from "./crudproducto.js";
+
+        const datosProductos = JSON.parse(localStorage.getItem('datosProductos'));
+        const params = new URLSearchParams(window.location.search);
+        const idProducto = params.get('id');
+
+        function mostrarProductos() {
+            const formulario = document.getElementById('editarProducto')
+            const nombre = document.getElementById('nombre');
+            const precio = document.getElementById('precio');
+            const descripcion = document.getElementById('descripcion');
+
+            const producto = datosProductos.find(producto => producto.id == idProducto);
+            if (producto) {
+                nombre.value = producto.nombre;
+                precio.value = producto.precio;
+                descripcion.value = producto.descripcion;
+            } else {
+                window.location.href = 'crudproducto.html';
+            }
+        }
+
+        const crudProducto = new CrudProducto();
+        document.getElementById('editarProducto').addEventListener('submit', (e) => {
+            e.preventDefault();
+            crudProducto.editarProducto(idProducto);
+        });
+
+        mostrarProductos();
+    </script>
+</body>
+
+</html>
